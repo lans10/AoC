@@ -1,4 +1,5 @@
 from numpy import prod
+import math
 
 with open("input", "r") as f:
     inp = f.readlines()
@@ -31,8 +32,11 @@ def main():
     distances = int(''.join([str(x) for x in distances]))
     
     print(inversemiddleout(times,distances,50000))
-
+    
+    print(literalmath(times,distances))
+    
 def inversemiddleout(time, distance, inc=1):
+    #I did try going middle and outward...thanks silicon valley
     losses=0
     lTime,rTime=1,time
     lLoss,rLoss=True,True
@@ -59,5 +63,10 @@ def inversemiddleout(time, distance, inc=1):
 
 def beat_helper(curr_time, time, distance):
     return ((time-curr_time)*curr_time)>distance
-
+#beat_helper() staring me in the face
+def literalmath(time,distance):
+    a,b,c = -1,time,-1*distance
+    x1 = math.ceil(-b+math.sqrt((b**2)-(4*(a*c))))/(2*a)
+    x2 = math.floor(-b-math.sqrt((b**2)-(4*(a*c))))/(2*a)
+    return int(x2-x1-1)
 main()
