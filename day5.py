@@ -9,44 +9,28 @@ def extract(inp):
     pointer = 0
     seeds = inp[pointer].split(":")[1].split()
     for i in range(len(seeds)):
-        seeds[i]=int(seeds[i])
-    #print(seeds)
-    
+        seeds[i]=int(seeds[i])    
     #seed to soil
     pointer = 3
-    seedsoil, pointer = extract_helper(pointer, inp)
-    #print(seedsoil)
-    
+    seedsoil, pointer = extract_helper(pointer, inp)    
     #soil to fertilizer
     pointer +=2
-    soilfertilizer, pointer = extract_helper(pointer, inp)
-    #print(soilfertilizer)
-    
+    soilfertilizer, pointer = extract_helper(pointer, inp)    
     #fertilizer to water
     pointer +=2
-    fertilizerwater, pointer = extract_helper(pointer, inp)
-    #print(fertilizerwater)
-    
+    fertilizerwater, pointer = extract_helper(pointer, inp)    
     #water to light
     pointer +=2
-    waterlight, pointer = extract_helper(pointer, inp)
-    #print(waterlight)
-    
+    waterlight, pointer = extract_helper(pointer, inp)    
     #light to temp
     pointer +=2
-    lighttemp, pointer = extract_helper(pointer, inp)
-    #print(lighttemp)
-    
+    lighttemp, pointer = extract_helper(pointer, inp)    
     #temp to humidity
     pointer +=2
-    temphumidity, pointer = extract_helper(pointer, inp)
-    #print(temphumidity)
-    
+    temphumidity, pointer = extract_helper(pointer, inp)    
     #humidity to location
     pointer +=2
-    humiditylocation, pointer = extract_helper(pointer, inp)
-    #print(humiditylocation)
-    
+    humiditylocation, pointer = extract_helper(pointer, inp)    
     return seeds, seedsoil, soilfertilizer, fertilizerwater, waterlight, lighttemp, temphumidity, humiditylocation
     
 def main():
@@ -77,8 +61,8 @@ def extract_helper(pointer, inp):
             l1[i][j] = int(l1[i][j])
     return l1, pointer
 
-def convert(src, dstList):
-    for i in dstList:
+def convert(src, dst_list):
+    for i in dst_list:
         if i[1]<=src<=i[1]+i[2]:
             return (i[0]+(src-i[1]))
     return src
