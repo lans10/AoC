@@ -1,4 +1,4 @@
-with open("input.txt", "r") as f:
+with open("input.txt", "r", encoding="utf-8") as f:
     inp = f.readlines()
 d = {}
 def main():
@@ -17,8 +17,7 @@ def main():
         if match>0:
             points+=2**(match-1)
         d[num]=[match,1]
-    print(points)
-    
+    print(points)  
     sc = 0
     for key in d.keys():
         #print("Card "+key+": "+str(d[key]))
