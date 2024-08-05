@@ -13,12 +13,12 @@ def main():
         inp[i].pop(-1)
     _sum = 0
     for i, _ in enumerate(inp):
-        for j, __ in enumerate(inp[i])):
+        for j, __ in enumerate(inp[i]):
             if inp[i][j].isdigit():
                 _sum += check_adj(inp, i, j, 1)
     print(_sum)
     ratio = 0
-    for key, value in d1.items():
+    for key, value in d1:
         if len(value)==2:
             ratio+=value[0]*value[1]
     print(ratio)
