@@ -38,8 +38,8 @@ def main():
     Reads file and prints locations per seed
     """
     with open("input.txt", "r", encoding="utf-8") as f:
-    inp = f.read()
-    inp = inp.split("\n")
+        inp = f.read()
+        inp = inp.split("\n")
     seeds, seedsoil, soilfertilizer, fertilizerwater, waterlight, lighttemp, temphumidity, humiditylocation = extract(inp)
     locs = []
     for seed in seeds:
