@@ -1,6 +1,7 @@
 """
 Day 8 of Advent of Code 2023
 """
+import numpy as np
 def main():
     """
     Part 1 solves for number of moves to move from AAA to ZZZ
@@ -51,18 +52,20 @@ def solve_part2(moves, nodes):
     targets = []
     for key, _ in nodes.items():
         if key[-1] == 'A':
-            targets.append(key)
-    while not target_helper(targets):
-        for c in moves:
-            for i, curr in enumerate(targets):
-                if c == "L":
-                    targets[i] = nodes[curr][0]
-                else:
-                    targets[i] = nodes[curr][1]
-                if target_helper(targets):
-                    break
-                count+=1
-    print(count)
+            curr = key
+            target = key[:2]+'Z'
+            while curr != target:
+                for c in moves:
+                    if c == "L":
+                        curr = nodes[curr][0]
+                    else:
+                        curr = nodes[curr][1]
+                    count += 1
+            if count not in targets:
+                targets.append(count)
+            count = 0
+            print(targets)
+    print(np.lcm.reduce(targets))
 
 def target_helper(l1):
     """
