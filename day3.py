@@ -1,27 +1,26 @@
 """
 Day 3 of Advent of Code 2023
 """
-with open("input.txt", "r", encoding="utf-8") as f:
-    inp = f.readlines()
-for i in range(0, len(inp)):
-    inp[i] = [x for x in inp[i]]
-    inp[i].pop(-1)
-
 def main():
     """
     Finds valid parts (numbers adjacent to symbol)
     Also finds symbols adjacent to two numbers and returns sum of their products.
     """
+    with open("input.txt", "r", encoding="utf-8") as f:
+        inp = f.readlines()
+    for i, _ in enumerate(inp)):
+        inp[i] = list(inp[i])
+        inp[i].pop(-1)
     _sum = 0
-    for i in range(0, len(inp)):
-        for j in range(0,len(inp[i])):
+    for i, _ in enumerate(inp)):
+        for j, __ in enumerate(inp[i])):
             if inp[i][j].isdigit():
-                _sum += check_adj(inp, i,j, 1)
+                _sum += check_adj(inp, i, j, 1)
     print(_sum)
     ratio = 0
-    for key in d1.keys():
-        if len(d1[key])==2:
-            ratio+=d1[key][0]*d1[key][1]
+    for key, value in d1.items():
+        if len(value)==2:
+            ratio+=value[0]*value[1]
     print(ratio)
 def check_adj(l1, i,j):
     """
