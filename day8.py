@@ -6,7 +6,7 @@ def main():
     """
     Part 1 solves for number of moves to move from AAA to ZZZ
     """
-    filename = "sample"
+    filename = "input"
     with open(filename, "r", encoding="utf-8") as f:
         inp = f.readlines()
         moves =inp.pop(0).split()[0]
@@ -40,7 +40,7 @@ def solve_part1(moves, nodes):
                 curr = nodes[curr][1]
             count += 1
     print(count)
-    
+
 def solve_part2(moves, nodes):
     """
     Solves part 2 by running a loop starting with every node that ends with A,
@@ -53,8 +53,7 @@ def solve_part2(moves, nodes):
     for key, _ in nodes.items():
         if key[-1] == 'A':
             curr = key
-            target = key[:2]+'Z'
-            while curr != target:
+            while curr[-1] != 'Z':
                 for c in moves:
                     if c == "L":
                         curr = nodes[curr][0]
@@ -66,15 +65,6 @@ def solve_part2(moves, nodes):
             count = 0
             print(targets)
     print(np.lcm.reduce(targets))
-
-def target_helper(l1):
-    """
-    Just checks if all targets are __Z
-    """
-    for i in l1:
-        if i[-1]!='Z':
-            return False
-    return True
 
 if __name__ == '__main__':
     main()
