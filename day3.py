@@ -1,11 +1,17 @@
-with open("input.txt", "r") as f:
+"""
+Day 3 of Advent of Code 2023
+"""
+with open("input.txt", "r", encoding="utf-8") as f:
     inp = f.readlines()
 for i in range(0, len(inp)):
     inp[i] = [x for x in inp[i]]
     inp[i].pop(-1)
-    #print(inp[i])
 
 def main():
+    """
+    Finds valid parts (numbers adjacent to symbol)
+    Also finds symbols adjacent to two numbers and returns sum of their products.
+    """
     _sum = 0
     for i in range(0, len(inp)):
         for j in range(0,len(inp[i])):
@@ -17,7 +23,10 @@ def main():
         if len(d1[key])==2:
             ratio+=d1[key][0]*d1[key][1]
     print(ratio)
-def check_adj(l1, i,j, replace):
+def check_adj(l1, i,j):
+    """
+    Helper function to search for valid parts
+    """
     num = l1[i][j]
     tmp_index=j+1
     while tmp_index<len(inp[i]):
@@ -107,9 +116,14 @@ def check_adj(l1, i,j, replace):
 
 d1 = {}
 def update(num,i,j):
+    """
+    Helper function to add valid part to a dictionary of parts
+    """
     key=str(i)+","+str(j)
     if key not in d1:
         d1[key]=[num]
     else:
         d1[key].append(num)
-main()
+
+if __name__ == '__main__':
+    main()
