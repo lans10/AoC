@@ -8,7 +8,7 @@ def main():
     """
     with open("input.txt", "r", encoding="utf-8") as f:
         inp = f.readlines()
-    for i, _ in enumerate(inp)):
+    for i, _ in enumerate(inp):
         inp[i] = list(inp[i])
         inp[i].pop(-1)
     _sum = 0
