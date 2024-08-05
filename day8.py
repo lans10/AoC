@@ -30,16 +30,15 @@ def solve_part1(moves, nodes):
     """
     count = 0
     curr = 'AAA'
-    if 'AAA' not in nodes:
-        return 0
-    while curr != 'ZZZ':
-        for c in moves:
-            if c == "L":
-                curr = nodes[curr][0]
-            else:
-                curr = nodes[curr][1]
-            count += 1
-    print(count)
+    if 'AAA' in nodes:
+        while curr != 'ZZZ':
+            for c in moves:
+                if c == "L":
+                    curr = nodes[curr][0]
+                else:
+                    curr = nodes[curr][1]
+                count += 1
+        print(count)
 
 def solve_part2(moves, nodes):
     """
