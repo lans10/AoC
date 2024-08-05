@@ -1,7 +1,13 @@
+"""
+Day 4 of Advent of Code 2023
+"""
 with open("input.txt", "r", encoding="utf-8") as f:
     inp = f.readlines()
 d = {}
 def main():
+    """
+    Scratchcard win counter
+    """
     points=0
     for card in inp:
         card = card.split(':')
@@ -17,11 +23,10 @@ def main():
         if match>0:
             points+=2**(match-1)
         d[num]=[match,1]
-    print(points)  
+    print(points)
     sc = 0
     for key in d.keys():
-        #print("Card "+key+": "+str(d[key]))
-        for k in range(d[key][1]):
+        for _ in range(d[key][1]):
             for i in range(1, d[key][0]+1):
                 d[str(int(key)+i)][1]+=1
         sc+=d[key][1]
