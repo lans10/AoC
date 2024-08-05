@@ -3,7 +3,7 @@ Day 7 of Advent of Code 2023
 """
 from functools import cmp_to_key
 
-with open("input", "r") as f:
+with open("input", "r", encoding="utf-8") as f:
     inp = f.readlines()
 
 types={"high":0,"one":1, "two":2, "three":3, "full":4, "four":5, "five":6}
@@ -131,7 +131,7 @@ def solve(part=2):
         for hand in row:
             winnings+=hand_bid[hand]*rank
             rank+=1
-    
+
     print(winnings)
 
 if __name__ == "__main__":
