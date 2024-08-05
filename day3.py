@@ -12,17 +12,17 @@ def main():
         inp[i] = list(inp[i])
         inp[i].pop(-1)
     _sum = 0
-    for i, _ in enumerate(inp):
-        for j, __ in enumerate(inp[i]):
-            if inp[i][j].isdigit():
+    for i, a in enumerate(inp):
+        for j, b in enumerate(inp[i]):
+            if b.isdigit():
                 _sum += check_adj(inp, i, j, 1)
     print(_sum)
     ratio = 0
-    for key, value in d1:
+    for _, value in d1:
         if len(value)==2:
             ratio+=value[0]*value[1]
     print(ratio)
-def check_adj(l1, i,j):
+def check_adj(inp, l1, i,j):
     """
     Helper function to search for valid parts
     """
