@@ -32,7 +32,7 @@ def extract(inp):
     pointer +=2
     humiditylocation, pointer = extract_helper(pointer, inp)
     return seeds, seedsoil, soilfertilizer, fertilizerwater, waterlight, lighttemp, temphumidity, humiditylocation
-    
+
 def main():
     """
     Reads file and prints locations per seed
