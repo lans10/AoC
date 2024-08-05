@@ -25,11 +25,11 @@ def main():
         d[num]=[match,1]
     print(points)
     sc = 0
-    for key in d.keys():
-        for _ in range(d[key][1]):
-            for i in range(1, d[key][0]+1):
+    for key, value in d:
+        for _ in range(value[1]):
+            for i in range(1, value[0]+1):
                 d[str(int(key)+i)][1]+=1
-        sc+=d[key][1]
+        sc+=value[1]
     print(sc)
 
 main()
