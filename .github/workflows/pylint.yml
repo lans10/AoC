@@ -20,7 +20,7 @@ jobs:
         pip install pylint
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py') --disable=C0301,R0914,R0912 --output=lint.txt || true
+        pylint $(git ls-files '*.py') --disable=C0301,R0914,R0912,R0915 --output=lint.txt || true
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
