@@ -13,7 +13,7 @@ def main():
         inp[i].pop(-1)
     _sum = 0
     for i, a in enumerate(inp):
-        for j, b in enumerate(inp[i]):
+        for j, b in enumerate(a):
             if b.isdigit():
                 _sum += check_adj(inp, i, j, 1)
     print(_sum)
