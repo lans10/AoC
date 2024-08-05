@@ -53,15 +53,15 @@ def solve_part2(moves, nodes):
         if key[-1] == 'A':
             targets.append(key)
     while not target_helper(targets):
-        for curr in targets:
-            for c in moves:
+        for c in moves:
+            for i, curr in enumerate(targets):
                 if c == "L":
-                    curr = nodes[curr][0]
+                    targets[i] = nodes[curr][0]
                 else:
-                    curr = nodes[curr][1]
-                count+=1
+                    targets[i] = nodes[curr][1]
                 if target_helper(targets):
                     break
+                count+=1
     print(count)
 
 def target_helper(l1):
