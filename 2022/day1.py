@@ -2,9 +2,9 @@
 Day 1 of Advent of Code 2022
 """
 def main():
-"""
-Uses white space as a separator
-"""
+    """
+    Uses white space as a separator
+    """
     with open("input", "r", encoding="utf-8") as f:
         inp = f.readlines()
     current_sum=0
