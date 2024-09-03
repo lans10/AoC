@@ -32,8 +32,12 @@ def main():
         point = rule[line[0]].index(line[1]) + rps.index(line[1])
         points += point
     print("Part 1: "+str(points))
-
-    #not good structure for p2
+    
+    points = 0
+    new_rules = {"X":0,"Y":3,"Z":6}
+    for line in inp:
+        line = line.split()
+        
         
 if __name__ == '__main__':
     main()
