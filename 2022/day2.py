@@ -40,6 +40,5 @@ def main():
         point += rps.index(rule[line[0]][new_rules[line[1]]])
         points+=point
     print("Part 2: "+str(points))
-        
 if __name__ == '__main__':
     main()
