@@ -17,12 +17,12 @@ def main():
         line = inp[i]
         line = [i for i in inp[i] if i!='\n']
         line = [line[i] for i in range(1, len(line), 4)]
-        if size==None:
+        if size is None:
             stacks=[deque() for i in range(len(line)+1)]
             size = len(line)
-        for j in range(0,len(line)):
-            if line[j]!=' ':
-                stacks[j+1].append(line[j])
+        for j,v in enumerate(line):
+            if v!=' ':
+                stacks[j+1].append(v)
         i+=1
     i+=2
     moves = i
@@ -46,7 +46,7 @@ def main():
         num, src, dest = int(line[1]), int(line[3]), int(line[5])
         temp = deque()
         for j in range(num):
-            c = temp.appendleft(stacks[src].popleft())
+            temp.appendleft(stacks[src].popleft())
         while len(temp)>0:
             stacks[dest].appendleft(temp.popleft())
         i+=1
