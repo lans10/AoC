@@ -23,14 +23,19 @@ def main():
     print("Part 2: "+str(overlap_count))
 
 def within(a,b):
-    #assuming a,b is list of 2 int
+    """
+    assuming a,b is list of 2 int, finds if one list is entirely within another
+    """
     if b[-1]-b[0]<a[-1]-a[0]:
         a,b = b,a
     if a[0]>=b[0] and a[-1]<=b[-1]:
         return True
     return False
 def overlap(a,b):
-    #assuming a,b is list of 2 int
+    """
+    assuming a,b is list of 2 int, finds if one list overlaps another
+    overlap: one or more elements contained within both lists
+    """
     return a[-1] >= b[0] and b[-1] >= a[0]
 if __name__ == '__main__':
     main()
