@@ -37,7 +37,11 @@ def main():
     new_rules = {"X":0,"Y":3,"Z":6}
     for line in inp:
         line = line.split()
-        
+        point = new_rules[line[1]]
+        #Find what hand to play and assign point accordingly
+        point += rps.index(rule[line[0]][new_rules[line[1]]])
+        points+=point
+    print("Part 2: "+str(points))
         
 if __name__ == '__main__':
     main()
