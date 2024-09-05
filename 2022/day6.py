@@ -1,23 +1,19 @@
 """
 Day 6 of Advent of Code 2022
 """
-from collections import deque
-from copy import deepcopy as copy
 def main():
     """
     marker
     """
-    with open("sample", "r", encoding="utf-8") as f:
+    with open("input", "r", encoding="utf-8") as f:
         inp = f.read()
-    read = ''
-    for i in range(0,len(inp)):
-        if len(read)>=4:
-            if inp[i] in read:
-                check = read[len(read)-3:]+inp[i]
-                print(check)
-                if len(set(check))==len(check):
-                    print(i-1)
-                    break
-        read+=inp[i]
+    read_text = ''
+    for i,v in enumerate(inp):
+        if len(read_text)>=4:
+            check = read_text[len(read_text)-3:]+v
+            if len(set(check))==len(check):
+                print("Part 1:"+str(i+1))
+                break
+        read_text+=v
 if __name__ == '__main__':
     main()
