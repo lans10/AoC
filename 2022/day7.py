@@ -1,3 +1,6 @@
+"""
+Day 7 of Advent of Code 2022
+"""
 def main():
     """
     fs
@@ -18,10 +21,9 @@ def main():
             while True:
                 if directory+str(j) not in sizes:
                     sizes[directory+str(j)]=0
+                    stack.append(directory+str(j))
                     break
-                else:
-                    j+=1
-            stack.append(directory+str(j))
+                j+=1
 
         elif line.startswith('$ ls'):
             counter+=1
