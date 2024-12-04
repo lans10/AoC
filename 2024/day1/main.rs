@@ -1,33 +1,40 @@
+//TODO
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
 
-fn main() {
-    let mut sum = 0;
-    let mut v1 = Vec::new();
-    let mut v2 = Vec::new();
-    //if let Ok(lines) = read_lines("./debug.txt") {
-    if let Ok(lines) = read_lines("./input.txt") {
-        for line in lines.flatten() {
-            //println!("{}",&line);
-            let parts: Vec<&str> = line.split_whitespace().collect();
-            let a = parts[0];
-            let b = parts[1];
-            v1.push(a.parse::<i32>().unwrap());
-            v2.push(b.parse::<i32>().unwrap());
+fn main(){
+    //let filename = "./debug.txt";
+    let filename = "./input.txt";
+    let config = Config::new(&filename);
+    parse_part1(config.v1, config.v2);
+}
+
+impl Config{
+    fn new(filename: &String) -> Config{
+        let mut v1 = Vec::new();
+        let mut v2 = Vec::new();
+        if let Ok(lines) = read_lines(filename) {
+            for line in lines.flatten() {
+                let parts: Vec<&str> = line.split_whitespace().collect();
+                v1.push(parts[0].parse::<i32>().unwrap());
+                v2.push(parts[1].parse::<i32>().unwrap());
+            }
         }
+        v1.sort();
+        v2.sort();
+        Config{v1,v2}
     }
-    v1.sort();
-    v2.sort();
-    //println!("{:?}", v1);
-    //println!("{:?}", v2);
+}
+
+fn parse_part1(v1:&Vec<i32>, v2:&Vec<i32>){
+    let mut sum = 0;
     for n in 0..v1.len(){
         sum += i32::abs(v1[n]-v2[n]);
     }
-    println!("Sum is {}", sum);
+    println!("Part 1:\nSum is {}", sum);
 }
 
-// The output is wrapped in a Result to allow matching on errors.
 // Returns an Iterator to the Reader of the lines of the file.
 fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
 where P: AsRef<Path>, {
