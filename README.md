@@ -1,3 +1,5 @@
 # AoC
-Advent of Code 2023
-Python 3
+Advent of Code
+- 2022 written in Python
+- 2023 written in Python
+- 2024 written in Rust (WIP)
