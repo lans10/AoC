@@ -46,7 +46,7 @@ pub fn parse_part2(v1:&Vec<i32>, v2_sum:&HashMap<i32,i32>){
     println!("Part 2: Sum is {}", sum);
 }
 
-// Returns an Iterator to the Reader of the lines of the file.
+// Returns an Iterator to the Reader of the lines of the file. From rust_docs
 fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
 where P: AsRef<Path>, {
     let file = File::open(filename)?;
