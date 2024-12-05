@@ -3,7 +3,7 @@ use std::io::{self, BufRead};
 use std::path::Path;
 
 // Returns an Iterator to the Reader of the lines of the file.
-pub fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
+fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
 where P: AsRef<Path>, {
     let file = File::open(filename)?;
     Ok(io::BufReader::new(file).lines())
@@ -27,20 +27,21 @@ pub fn parse_file(filename: &String){
 						let mut v2 = v1.clone();
 						v2.remove(i);
 						check = check_list(&v2);
+						v2.clear();
 						if check{
 							safe_count_2 += 1;
 							break;
 						}
 					}
 				}
-				v1.clear()
+				v1.clear();
 			}
 	}
 	println!("Part 1: Safe reports = {}", safe_count_1);
 	println!("Part 2: Safe reports = {}", safe_count_1+safe_count_2);
 }
 
-pub fn check_list(v1: &Vec<i32>) -> bool{
+fn check_list(v1: &Vec<i32>) -> bool{
     let inc;
     if v1[0] < v1[1] && v1[1] < v1[2] {
         inc = true;
