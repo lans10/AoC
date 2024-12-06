@@ -1,7 +1,7 @@
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
-use regex::Regex;
+use regex_lite::Regex;
 
 pub fn parse_file(filename: &String){
 	parse_file_part_1(&filename);
