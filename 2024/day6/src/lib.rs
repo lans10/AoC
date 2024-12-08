@@ -49,7 +49,7 @@ fn sum_walk(guard_i: &usize, guard_j: &usize, guard_pos: &char, map: &mut Vec<Ve
     let mut dj: isize;
     map[curr_i as usize][curr_j as usize] = 'X';
     loop {
-        if start_time.elapsed().as_millis() > 1 {
+        if start_time.elapsed().as_micros() > 1600 {
             return 0;
         }
         (di, dj) = get_dir(&curr_pos);
