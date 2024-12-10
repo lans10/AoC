@@ -45,13 +45,14 @@ fn parse_file_part_2(filename: &String){
 						let b = &t[2].parse::<i32>().unwrap();
 						sum += a*b;
 					}
-				} else if t.get(0).unwrap().as_str().starts_with("don\'t"){
+					} else if t.get(0).unwrap().as_str().starts_with("don\'t"){
 					do_it = false;
-				} else {
+					} else {
 					do_it = true;
 				}
 			}
 		}
 	}
 	println!("Part 2: Sum of muls is {}", sum);
-}
+	}
+		

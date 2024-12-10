@@ -27,11 +27,11 @@ fn parse_file_helper(filename: &String){
 			if order_rule{
 				let parts: Vec<&str> = line.split("|").collect();
 				rules.push((parts[0].parse::<u8>().unwrap(),parts[1].parse::<u8>().unwrap()));				
-			} else {
+				} else {
 				let curr = process_update(&line, &rules);
 				if curr == 0{
 					mid_sum_2 += process_incorrect(&line, &rules);
-				}else{
+					}else{
 					mid_sum_1 += curr;
 				}
 			}
@@ -54,50 +54,51 @@ fn process_update(line: &String, rules: &Vec<(u8,u8)>) -> usize{
 		}
 	}
 	for (a, b) in &curr_rules{
-		if update.contains(&a) && update.contains(&b){
-			if update.iter().position(|&r| r == *a).unwrap() > update.iter().position(|&r| r == *b).unwrap(){
-				return 0;
-			}
-		}
+	if update.contains(&a) && update.contains(&b){
+	if update.iter().position(|&r| r == *a).unwrap() > update.iter().position(|&r| r == *b).unwrap(){
+	return 0;
+	}
+	}
 	}
 	update[update.len() / 2] as usize
-}
-
-fn process_incorrect(line: &String, rules: &Vec<(u8, u8)>) -> usize {
+	}
+	
+	fn process_incorrect(line: &String, rules: &Vec<(u8, u8)>) -> usize {
     let mut curr_rules: Vec<(u8, u8)> = vec![];
     let mut ordered: Vec<u8> = vec![];
     let mut update: Vec<u8> = vec![];
     for part in line.split(",") {
-        update.push(part.parse::<u8>().unwrap());
+	update.push(part.parse::<u8>().unwrap());
     }
     for (a, b) in rules {
-        if update.contains(a) && update.contains(b) {
-            curr_rules.push((*a, *b));
-        }
+	if update.contains(a) && update.contains(b) {
+	curr_rules.push((*a, *b));
+	}
     }
     while let Some(new_element) = update.pop() {
-        ordered.push(new_element);
-        let mut idx = ordered.len() - 1;
-        while idx > 0 {
-            let mut valid = true;
-            for (a, b) in &curr_rules {
-                if ordered[idx] == *a && ordered.contains(b) {
-                    if idx > ordered.iter().position(|&r| r == *b).unwrap() {
-                        valid = false;
-                    }
-                } else if ordered[idx] == *b && ordered.contains(a) {
-                    if idx < ordered.iter().position(|&r| r == *a).unwrap() {
-                        valid = false;
-                    }
-                }
-            }
-            if valid {
-                break;
-            } else {
-                ordered.swap(idx, idx - 1);
-                idx -= 1;
-            }
-        }
+	ordered.push(new_element);
+	let mut idx = ordered.len() - 1;
+	while idx > 0 {
+	let mut valid = true;
+	for (a, b) in &curr_rules {
+	if ordered[idx] == *a && ordered.contains(b) {
+	if idx > ordered.iter().position(|&r| r == *b).unwrap() {
+	valid = false;
+	}
+	} else if ordered[idx] == *b && ordered.contains(a) {
+	if idx < ordered.iter().position(|&r| r == *a).unwrap() {
+	valid = false;
+	}
+	}
+	}
+	if valid {
+	break;
+	} else {
+	ordered.swap(idx, idx - 1);
+	idx -= 1;
+	}
+	}
     }
     ordered[ordered.len() / 2] as usize
-}
+	}
+		

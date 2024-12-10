@@ -17,22 +17,22 @@ impl Config{
                 let parts: Vec<&str> = line.split_whitespace().collect();
                 v1.push(parts[0].parse::<i32>().unwrap());
                 v2.push(parts[1].parse::<i32>().unwrap());
-            }
-        }
+			}
+		}
         v1.sort();
         v2.sort();
 		for &num in &v2 {
 			*v2_sum.entry(num).or_insert(0) += 1;
 		}
         Config{v1,v2,v2_sum}
-    }
+	}
 }
 
 pub fn parse_part1(v1:&Vec<i32>, v2:&Vec<i32>){
     let mut sum = 0;
     for n in 0..v1.len(){
         sum += i32::abs(v1[n]-v2[n]);
-    }
+	}
     println!("Part 1: Sum is {}", sum);
 }
 
@@ -42,7 +42,7 @@ pub fn parse_part2(v1:&Vec<i32>, v2_sum:&HashMap<i32,i32>){
 		if let Some(&count) = v2_sum.get(&n) {
 			sum += n * count;
 		}
-    }
+	}
     println!("Part 2: Sum is {}", sum);
 }
 

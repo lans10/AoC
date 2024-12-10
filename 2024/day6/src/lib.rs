@@ -51,83 +51,83 @@ fn sum_walk(guard_i: &usize, guard_j: &usize, guard_pos: &char, map: &mut Vec<Ve
     loop {
         if start_time.elapsed().as_micros() > 1600 {
             return 0;
-        }
-        (di, dj) = get_dir(&curr_pos);
-        let next_i = curr_i + di;
-        let next_j = curr_j + dj;
-        if !valid(&next_i, &next_j, &map) {
-            return steps;
-        }
-        match map[next_i as usize][next_j as usize] {
-            '.' => {
-                map[next_i as usize][next_j as usize] = 'X';
-                steps += 1;
-                curr_i = next_i;
-                curr_j = next_j;
-            }
-            '#' => {
-                curr_pos = change_dir(curr_pos);
-            }
-            'X' => {
-                curr_i = next_i;
-                curr_j = next_j;
-            }
-            _ => {
-                return steps;
-            }
-        }
-    }
-}
-
-fn valid(x: &isize, y: &isize, map: &Vec<Vec<char>>) -> bool {
+		}
+	(di, dj) = get_dir(&curr_pos);
+	let next_i = curr_i + di;
+	let next_j = curr_j + dj;
+	if !valid(&next_i, &next_j, &map) {
+	return steps;
+	}
+	match map[next_i as usize][next_j as usize] {
+	'.' => {
+	map[next_i as usize][next_j as usize] = 'X';
+	steps += 1;
+	curr_i = next_i;
+	curr_j = next_j;
+	}
+	'#' => {
+	curr_pos = change_dir(curr_pos);
+	}
+	'X' => {
+	curr_i = next_i;
+	curr_j = next_j;
+	}
+	_ => {
+	return steps;
+	}
+	}
+	}
+	}
+	
+	fn valid(x: &isize, y: &isize, map: &Vec<Vec<char>>) -> bool {
     *x >= 0 && *y >= 0 && *x < map.len() as isize && *y < map[0].len() as isize
-}
-
-fn get_dir(curr_pos: &char) -> (isize, isize){
+	}
+	
+	fn get_dir(curr_pos: &char) -> (isize, isize){
 	let directions = vec![
-        (-1, 0, '^'),
-        (1, 0, 'v'),
-        (0, -1, '<'),
-        (0, 1, '>'),
+	(-1, 0, '^'),
+	(1, 0, 'v'),
+	(0, -1, '<'),
+	(0, 1, '>'),
     ];
 	for (a, b, c) in directions{
-		if c == *curr_pos{
-			return (a, b);
-		}
+	if c == *curr_pos{
+	return (a, b);
+	}
 	}
 	(0, 0)
-}
-
-fn change_dir(curr_pos: char) -> char {
+	}
+	
+	fn change_dir(curr_pos: char) -> char {
     match curr_pos {
-        '^' => '>',
-        '>' => 'v',
-        'v' => '<',
-        '<' => '^',
-		_ => curr_pos,
-    }
-}
-
-fn _print_map(map: &Vec<Vec<char>>){
+	'^' => '>',
+	'>' => 'v',
+	'v' => '<',
+	'<' => '^',
+	_ => curr_pos,
+	}
+	}
+	
+	fn _print_map(map: &Vec<Vec<char>>){
 	for i in map{
-		println!("{:?}", i);
+	println!("{:?}", i);
 	}
 	println!();
-}
-
-fn obstacle_adder(guard_i: usize, guard_j: usize, guard_pos: char, map: &Vec<Vec<char>>, map_copy: &Vec<Vec<char>>) -> usize {
+	}
+	
+	fn obstacle_adder(guard_i: usize, guard_j: usize, guard_pos: char, map: &Vec<Vec<char>>, map_copy: &Vec<Vec<char>>) -> usize {
     let mut candidates = 0;
     for i in 0..map.len() {
-        for j in 0..map[0].len() {
-            if map[i][j] == 'X' && (i!=guard_i || j!=guard_j) {
-                let mut new_map = map_copy.clone();
-                new_map[i][j] = '#';
-				let sum = sum_walk(&guard_i, &guard_j, &guard_pos, &mut new_map);
-				if sum == 0 {
-                    candidates += 1;
-                }
-            }
-        }
-    }
+	for j in 0..map[0].len() {
+	if map[i][j] == 'X' && (i!=guard_i || j!=guard_j) {
+	let mut new_map = map_copy.clone();
+	new_map[i][j] = '#';
+	let sum = sum_walk(&guard_i, &guard_j, &guard_pos, &mut new_map);
+	if sum == 0 {
+	candidates += 1;
+	}
+	}
+	}
+	}
     candidates
-}
+	}	

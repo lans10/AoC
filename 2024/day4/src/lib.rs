@@ -23,14 +23,14 @@ where P: AsRef<Path>, {
 
 fn parse_file_part_1(xmas_box: &Vec<Vec<char>>){
 	let directions = vec![
-        (-1, 0, "n"),
-        (1, 0, "s"),
-        (0, -1, "w"),
-        (0, 1, "e"),
-		(-1, 1, "ne"),
-		(1, 1, "se"),
-		(-1, -1, "nw"),
-		(1, -1, "sw"),
+	(-1, 0, "n"),
+	(1, 0, "s"),
+	(0, -1, "w"),
+	(0, 1, "e"),
+	(-1, 1, "ne"),
+	(1, 1, "se"),
+	(-1, -1, "nw"),
+	(1, -1, "sw"),
     ];
 	let mut sum = 0;
 	for i in 0..xmas_box.len(){
@@ -53,37 +53,38 @@ fn parse_file_part_2(xmas_box: &Vec<Vec<char>>){
 				((xmas_box[i+1][j-1] == 'M' && xmas_box[i-1][j+1] == 'S') || (xmas_box[i+1][j-1] == 'S' && xmas_box[i-1][j+1] == 'M')){
 					sum += 1;
 				}
-			}
-		}
-	}
-	println!("Part 2: XMAS count is {}", sum);
-}
-
-fn valid(x: isize, y:isize, xmas_box: &Vec<Vec<char>>) -> bool{
-	return x >= 0  && y >= 0 && x < xmas_box.len() as isize && y < xmas_box[0].len() as isize;
-}
-
-fn find_xmas(i: usize, j: usize, directions: &Vec<(isize, isize, &str)>, xmas_box: &Vec<Vec<char>>) -> usize {
-    let mut count = 0;
-    for &(di, dj, _) in directions {
-        let mut x = i as isize;
-        let mut y = j as isize;
-        x += di;
-        y += dj;
-        if !valid(x, y, &xmas_box) || xmas_box[x as usize][y as usize] != 'M' {
-            continue;
-        }
-        x += di;
-        y += dj;
-        if !valid(x, y, &xmas_box) || xmas_box[x as usize][y as usize] != 'A' {
-            continue;
-        }
-        x += di;
-        y += dj;
-        if !valid(x, y, &xmas_box) || xmas_box[x as usize][y as usize] != 'S' {
-            continue;
-        }
-        count += 1;
-    }
-    count
-}
+				}
+				}
+				}
+				println!("Part 2: XMAS count is {}", sum);
+				}
+				
+				fn valid(x: isize, y:isize, xmas_box: &Vec<Vec<char>>) -> bool{
+				return x >= 0  && y >= 0 && x < xmas_box.len() as isize && y < xmas_box[0].len() as isize;
+				}
+				
+				fn find_xmas(i: usize, j: usize, directions: &Vec<(isize, isize, &str)>, xmas_box: &Vec<Vec<char>>) -> usize {
+				let mut count = 0;
+				for &(di, dj, _) in directions {
+				let mut x = i as isize;
+				let mut y = j as isize;
+				x += di;
+				y += dj;
+				if !valid(x, y, &xmas_box) || xmas_box[x as usize][y as usize] != 'M' {
+				continue;
+				}
+				x += di;
+				y += dj;
+				if !valid(x, y, &xmas_box) || xmas_box[x as usize][y as usize] != 'A' {
+				continue;
+				}
+				x += di;
+				y += dj;
+				if !valid(x, y, &xmas_box) || xmas_box[x as usize][y as usize] != 'S' {
+				continue;
+				}
+				count += 1;
+				}
+				count
+				}
+								

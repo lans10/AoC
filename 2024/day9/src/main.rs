@@ -6,5 +6,4 @@ fn main() {
     //let filename = "./debug.txt";
     let filename = "./input.txt";
 	parse_file(filename);
-
 }
